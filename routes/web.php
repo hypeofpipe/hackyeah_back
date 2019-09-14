@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/initialize', 'InitializeController@index');
+
+Route::get('/trash', 'TrashRecycleController@index');
+
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+    'verify' => false,
+]);
+
+Route::get('/home', 'HomeController@index')->name('home');
