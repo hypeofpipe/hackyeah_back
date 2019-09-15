@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/initialize', 'InitializeController@index');
 
-Route::get('/trash', 'TrashRecycleController@index');
+Route::post('/trash', 'TrashRecycleController@index');
 
 Auth::routes([
     'register' => false,

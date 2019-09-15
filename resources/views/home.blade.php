@@ -29,7 +29,7 @@
                             <tr class="text-center">
                                 <td>{{$trash->id}}</td>
                                 <td>
-                                    <a href="{{ url('/uploads/')}}/{{$trash->image_path}}" target="_blank">
+                                    <a href="{{ url('/uploads/')}}/{{$trash->image_path}}">
                                         <img style="width: 40px; height: 40px;" src="{{ url('/uploads/')}}/{{$trash->image_path}}" class="img-thumbnail" alt="{{$trash->id}}">
                                     </a>
                                 </td>
