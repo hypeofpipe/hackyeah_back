@@ -2,28 +2,30 @@
 
 namespace App\Entity;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Storage;
+use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Storage;
 
 class Ticket extends Model
 {
-    protected $fillable = ['category_id', 'location'];
-
     public function category()
     {
-        return $this->hasOne(TrashCategory::class);
+        return $this->belongsTo(TrashCategory::class, 'trash_category_id', 'id');
     }
 
     public static function add($fields)
     {
-        $post = new Static;
+        $ticket = new Static;
 
-        $post->fill($fields);
-        $post->user_id = 1;
-        $post->save();
+        $latitude = $fields['location']['latitude'];
+        $longitude = $fields['location']['longitude'];
 
-        return $post;
+        $ticket->location = $latitude .','. $longitude;
+        $ticket->trash_category_id = $fields['type_of_trash'];
+
+        $ticket->save();
+
+        return $ticket;
     }
 
     public function uploadTrashImage($image)
@@ -32,12 +34,15 @@ class Ticket extends Model
             return;
         }
 
-        if(!is_null($this->image_path)){
-            Storage::delete('uploads/trash_images/' . $this->image_path);
-        }
+        if (preg_match('/^data:image\/(\w+);base64,/', $image)) {
+            $data = substr($image, strpos($image, ',') + 1);
 
-        $filename = str_random(10);
-        $image->storeAs('uploads/trash_images', $filename);
+            $data = base64_decode($data);
+
+            $filename = Uuid::uuid4();
+
+            Storage::disk('public')->put($filename, $data);
+        }
 
         $this->image_path = $filename;
         $this->save();

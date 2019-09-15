@@ -10,9 +10,8 @@ class TrashRecycleController extends Controller
 {
     public function index(Request $request)
     {
-        $ticket = Ticket::create(
-            $request->all()
-        );
+        $ticket = Ticket::add($request->all());
+        $ticket->uploadTrashImage($request->image);
 
         return response()
             ->json(['ticket' => $ticket])

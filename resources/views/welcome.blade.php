@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Crash Reporter
+                    Trash Reporter
                 </div>
 
                 <div class="links">

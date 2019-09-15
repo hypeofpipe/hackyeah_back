@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $requests = Ticket::all();
+        $requests = Ticket::with('category')->get();
+
         return view('home', compact('requests'));
     }
 }

@@ -15,7 +15,7 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->integer('trash_category_id');
             $table->string('location');
             $table->timestamps();
