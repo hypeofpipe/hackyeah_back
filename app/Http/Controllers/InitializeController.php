@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Entity\TrashCategory;
 
 class InitializeController extends Controller
 {
     public function index()
     {
-        return response()->json(
-            [
-                'type_of_trash' =>
-                    [
-                        1 => 'Bike',
-                        2 => 'Car',
-                        3 => 'Heavy Trash',
-                        4 => 'Other',
-                    ]
+        $categories = TrashCategory::all();
+
+        $categoriesArr = [];
+
+        foreach ($categories as $key => $category) {
+            $categoriesArr[$category->id] = $category->name;
+        }
+
+        return response()->json([
+                'type_of_trash' => $categoriesArr
             ]
         );
     }
