@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $requests = Ticket::with('category')->get();
+        $requests = Ticket::with('category')->paginate(5);
 
         return view('home', compact('requests'));
     }

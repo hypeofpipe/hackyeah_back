@@ -1,100 +1,99 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/build/favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>React App</title>
+    <link href="./static/css/2.59a0c81d.chunk.css" rel="stylesheet">
+    <link href="./static/css/main.2f8d7aa4.chunk.css" rel="stylesheet">
+</head>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script>
+    ! function(l) {
+        function e(e) {
+            for (var r, t, n = e[0], o = e[1], u = e[2], a = 0, f = []; a < n.length; a++) t = n[a], Object.prototype.hasOwnProperty.call(c, t) && c[t] && f.push(c[t][0]), c[t] = 0;
+            for (r in o) Object.prototype.hasOwnProperty.call(o, r) && (l[r] = o[r]);
+            for (s && s(e); f.length;) f.shift()();
+            return p.push.apply(p, u || []), i()
+        }
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+        function i() {
+            for (var e, r = 0; r < p.length; r++) {
+                for (var t = p[r], n = !0, o = 1; o < t.length; o++) {
+                    var u = t[o];
+                    0 !== c[u] && (n = !1)
+                }
+                n && (p.splice(r--, 1), e = a(a.s = t[0]))
             }
+            return e
+        }
+        var t = {},
+            c = {
+                1: 0
+            },
+            p = [];
 
-            .full-height {
-                height: 100vh;
-            }
+        function a(e) {
+            if (t[e]) return t[e].exports;
+            var r = t[e] = {
+                i: e,
+                l: !1,
+                exports: {}
+            };
+            return l[e].call(r.exports, r, r.exports, a), r.l = !0, r.exports
+        }
+        a.m = l, a.c = t, a.d = function(e, r, t) {
+            a.o(e, r) || Object.defineProperty(e, r, {
+                enumerable: !0,
+                get: t
+            })
+        }, a.r = function(e) {
+            "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, {
+                value: "Module"
+            }), Object.defineProperty(e, "__esModule", {
+                value: !0
+            })
+        }, a.t = function(r, e) {
+            if (1 & e && (r = a(r)), 8 & e) return r;
+            if (4 & e && "object" == typeof r && r && r.__esModule) return r;
+            var t = Object.create(null);
+            if (a.r(t), Object.defineProperty(t, "default", {
+                enumerable: !0,
+                value: r
+            }), 2 & e && "string" != typeof r)
+                for (var n in r) a.d(t, n, function(e) {
+                    return r[e]
+                }.bind(null, n));
+            return t
+        }, a.n = function(e) {
+            var r = e && e.__esModule ? function() {
+                return e.default
+            } : function() {
+                return e
+            };
+            return a.d(r, "a", r), r
+        }, a.o = function(e, r) {
+            return Object.prototype.hasOwnProperty.call(e, r)
+        }, a.p = "./";
+        var r = window.webpackJsonphackyeah_front = window.webpackJsonphackyeah_front || [],
+            n = r.push.bind(r);
+        r.push = e, r = r.slice();
+        for (var o = 0; o < r.length; o++) e(r[o]);
+        var s = n;
+        i()
+    }([])
+</script>
+<script src="./static/js/2.594e9261.chunk.js"></script>
+<script src="./static/js/main.6c4eeee5.chunk.js"></script>
+</body>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Trash Reporter
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
 </html>
